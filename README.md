@@ -2,8 +2,8 @@
 
 Este repositorio contiene los proyectos y ejercicios de dos grandes areas de estudio:
 
-- ** Backend
-### Backend (.NET)
+# Backend
+### .NET
 - ASP.NET Core
 - Clean Architecture
 - Entity Framework Core
@@ -12,7 +12,8 @@ Este repositorio contiene los proyectos y ejercicios de dos grandes areas de est
 - Serilog
 
 
-### Frontend (React)
+# Frontend 
+### React
 - React (Vite y CRA)
 - React Router
 - Redux Toolkit
@@ -21,5 +22,5 @@ Este repositorio contiene los proyectos y ejercicios de dos grandes areas de est
 
 Autor
 
-LinkedIn: https://www.linkedin.com/in/jose-antonio-narvaez-guzman-940589213/
+LinkedIn: https://www.linkedin.com/in/jose-antonio-narvaez-guzman-940589213/ |
 GitHub: https://github.com/FatTony154
