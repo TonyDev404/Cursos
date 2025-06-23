@@ -2,17 +2,22 @@
 # .NET
 # ======================================
 
-# Build results
+=======
+## Build results
 bin/
 obj/
 
-#user-specific files
+## User-specific files
+>>>>>>> f044cd9943c9a9ce155abaa0fc6d6821ea7b9532
 *.user
 *.suo
 *.userosscache
 *.sln.docstates
 
-##Rider / VS Code / VS
+
+=======
+## Rider / VS Code / VS
+>>>>>>> f044cd9943c9a9ce155abaa0fc6d6821ea7b9532
 .idea/
 .vscode/
 
@@ -21,7 +26,10 @@ project.lock.json
 project.fragment.lock.json
 artifacts/
 
-#Auto-generated files
+
+=======
+# Auto-generated files
+>>>>>>> f044cd9943c9a9ce155abaa0fc6d6821ea7b9532
 Generated_Code/
 
 ## Others
@@ -32,8 +40,10 @@ Generated_Code/
 # React / Node.js
 # ======================================
 
+=======
 node_modules/
-npmm-debug.log*
+npm-debug.log*
+>>>>>>> f044cd9943c9a9ce155abaa0fc6d6821ea7b9532
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
@@ -43,17 +53,22 @@ build/
 .next/
 out/
 
-#Environment files
+
+=======
+# Environment files
 .env
 .env.*.local
 
-# Mac / Linux / Windows
+# Mac / Linux / Windows system files
+>>>>>>> f044cd9943c9a9ce155abaa0fc6d6821ea7b9532
 .DS_Store
 Thumbs.db
 
 # ======================================
 # Optional: Ignore compiled JS from TS
-*..tsbuildinfo
+=======
+*.tsbuildinfo
+>>>>>>> f044cd9943c9a9ce155abaa0fc6d6821ea7b9532
 
 # ======================================
 # Ignore coverage reports
@@ -65,3 +80,6 @@ coverage/
 *.tmp
 temp/
 
+
+=======
+>>>>>>> f044cd9943c9a9ce155abaa0fc6d6821ea7b9532
