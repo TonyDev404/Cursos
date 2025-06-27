@@ -1,5 +1,4 @@
-﻿
-List<int> numbers = new List<int>();
+﻿List<int> numbers = new List<int>();
 numbers.Add(5);
 numbers.Add(2);
 

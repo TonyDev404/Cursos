@@ -1,5 +1,4 @@
-﻿
-MyList<int> numbers = new MyList<int>(10);
+﻿MyList<int> numbers = new MyList<int>(10);
 numbers.Add(10);
 numbers.Add(6);
 
@@ -20,13 +19,13 @@ Console.WriteLine(strings.GetElement(0));
 
 public class People
 {
-   public string Name { get; set; }
-   public string Country { get; set; }
+    public string Name { get; set; }
+    public string Country { get; set; }
 
-   public override string ToString()
-   {
-       return $"Nombre: {Name}, Country: {Country}";
-   }
+    public override string ToString()
+    {
+        return $"Nombre: {Name}, Country: {Country}";
+    }
 }
 
 public class MyList<T>

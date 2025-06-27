@@ -80,4 +80,3 @@ public interface IFish
     public int Speed { get; set; }
     public string Swim();
 }
-
