@@ -2,7 +2,7 @@
 
 namespace BaseDeDatos;
 
-public class DB
+public abstract class DB
 {
     private string _connectionString;
     protected SqlConnection _connection; //Se debe instalar System.Data.SqlClient

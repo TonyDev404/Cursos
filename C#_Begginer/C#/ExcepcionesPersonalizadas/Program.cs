@@ -35,4 +35,3 @@ public class Beer
         return $"Name: {Name}, Brand: {Brand}";
     }
 }
-

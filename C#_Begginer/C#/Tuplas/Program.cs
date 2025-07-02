@@ -1,6 +1,4 @@
-﻿
-
-(int id, string name) product = (1, "cerveza stout");
+﻿(int id, string name) product = (1, "cerveza stout");
 
 Console.WriteLine($"{product.id}  {product.name}");
 

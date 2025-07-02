@@ -1,25 +1,37 @@
-﻿ 
- try
- {
-     string content = File.ReadAllText(@"C:\Users\ironm\Documents\pato.txt");
-     Console.WriteLine(content);
+﻿try
+{
+    Beer beer = new Beer()
+    {
+        Name = "London Porter",
+        //Brand = "Fuller's"
+    };
+    
+    Console.WriteLine(beer.ToString());
+}
+catch (InvalidBeerException ex)
+{
+    Console.WriteLine(ex.Message);
+}
 
-     // string content2 = File.ReadAllText(@"C:\Users\ironm\Documents\pato2.txt");
-     // Console.WriteLine(content2);
+public class InvalidBeerException : Exception
+{
+    public InvalidBeerException() : base("La cerveza no tiene nombre o marca, por lo cual no es valido")
+    {
+        
+    }
+}
 
-     throw new Exception("Ocurrio algo raro");
- }
- catch (FileNotFoundException e)
- {
-     Console.WriteLine("El archivo no existe");
- }
- catch (Exception ex)
- {
-     Console.WriteLine(ex.Message);
- }
- finally
- {
-     Console.WriteLine("Aqui me he ejecutado, pase lo que pase");
- }
-
- Console.WriteLine("Aqui se sigue ejecutando");
+public class Beer
+{
+    public string Name { get; set; }
+    public string Brand { get; set; }
+    
+    
+    public override string ToString()
+    {
+        if (Name == null || Brand == null)
+            throw new InvalidBeerException();
+            
+        return $"Name: {Name}, Brand: {Brand}";
+    }
+}
