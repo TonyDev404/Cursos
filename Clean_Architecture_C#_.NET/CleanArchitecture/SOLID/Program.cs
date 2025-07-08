@@ -1,4 +1,4 @@
-﻿var beerData = new BeerData();
+﻿IRepository<string> beerData = new BeerData();
 beerData.Add("Corona");
 beerData.Add("Delirium");
 beerData.Add("Erdinger");
@@ -10,13 +10,28 @@ var data = reportGeneratorBeer.Generate();
 //report.Save(reportGeneratorBeer, "cervezas.txt");
 report.Save(reportGeneratorHtmlBeer, "cervezas.html");
 
+Show(reportGeneratorBeer);
+void Show(IReportShow report)
+{
+    report.Show();
+}
 
 public interface IReportGenerator
 {
     public string Generate();
 }
+public interface IReportShow
+{
+    public void Show();
+}
 
-public class BeerData
+public interface IRepository<T>
+{
+    public void Add(T item);
+    public List<T> Get();
+}
+
+public class BeerData : IRepository<string>
 {
     protected List<string> _beers;
 
@@ -47,13 +62,14 @@ public class BeerData
 
 public class LimitedBeerData
 {
-    private BeerData _beerData = new BeerData();
+    private IRepository<string> _beerData;
     private int _limit;
-    private int _count;
+    private int _count = 0;
 
-    public LimitedBeerData(int limit)
+    public LimitedBeerData(int limit, IRepository<string> beerData)
     {
         _limit = limit;
+        _beerData = beerData;
     }
 
     public void Add(string beer)
@@ -67,11 +83,11 @@ public class LimitedBeerData
     }
 }
 
-public class ReportGeneratorBeer : IReportGenerator
+public class ReportGeneratorBeer : IReportGenerator, IReportShow
 {
-    private BeerData _beerData;
+    private IRepository<string> _beerData;
 
-    public ReportGeneratorBeer(BeerData beerData)
+    public ReportGeneratorBeer(IRepository<string> beerData)
     {
         _beerData = beerData;
     }
@@ -86,13 +102,21 @@ public class ReportGeneratorBeer : IReportGenerator
 
         return data;
     }
+
+    public void Show()
+    {
+        foreach (var beer in _beerData.Get())
+        {
+            Console.WriteLine("Cerveza: " + beer);
+        }
+    }
 }
 
 public class ReportGeneratorHtmlBeer : IReportGenerator
 {
-    private BeerData _beerData;
+    private IRepository<string> _beerData;
 
-    public ReportGeneratorHtmlBeer(BeerData beerData)
+    public ReportGeneratorHtmlBeer(IRepository<string> beerData)
     {
         _beerData = beerData;
     }
@@ -107,6 +131,11 @@ public class ReportGeneratorHtmlBeer : IReportGenerator
 
         data += "</div>";
         return data;
+    }
+
+    public void Show()
+    {
+        throw new NotImplementedException();
     }
 }
 
