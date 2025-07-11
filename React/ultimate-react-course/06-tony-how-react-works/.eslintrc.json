@@ -17,7 +17,7 @@
   "plugins": ["react"],
   "rules": {
     "indent": ["error", 2],               // Puedes cambiar 2 por 4 si usas 4 espacios
-    "quotes": ["error", "double"],        // o 'single'
+    "quotes": ["warn", "double", {"avoidEscape": true}],        // o 'single'
     "semi": ["error", "always"],
     "react/prop-types": "off"             // útil si no usas PropTypes
   }
