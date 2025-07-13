@@ -69,12 +69,14 @@ export default function App() {
 
   useEffect(
     function () {
+      const controller = new AbortController(); //Para poder cancelar la petición si el usuario cambia la búsqueda antes de que se complete
+
       async function fetchMovies() {
         try {
           setIsLoading(true);
           setError("");
           const res = await fetch(
-            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`
+            `http://www.omdbapi.com/?apikey=${KEY}&s=${query}`, {signal: controller.signal}
           );
 
           if (!res.ok)
@@ -85,9 +87,15 @@ export default function App() {
           if (data.Response === "False") throw new Error("Movie not found");
 
           setMovies(data.Search);
+          setError("");
+          
         } catch (err) {
-          console.error(err);
-          setError(err.message);
+          console.error(err.message);
+
+          if(err.name !== "AbortError")
+          {
+            setError(err.message);
+          }
         } finally {
           setIsLoading(false);
         }
@@ -100,6 +108,11 @@ export default function App() {
       }
 
       fetchMovies();
+
+      return function()
+      {
+        controller.abort();
+      };
     },
     [query]
   ); //Se ejecuta cada vez que cambia la query
@@ -301,6 +314,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     Genre: genre,
   } = movie;
 
+
   function handleAdd() {
     const newWatchedMovie = {
       imdbID: selectedId,
@@ -331,6 +345,16 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     },
     [selectedId]
   );
+
+  useEffect(function () {
+    if(!title) return; //Si no hay título, no hace nada
+    document.title = `Movie | ${title}`; //Cambia el título de la pestaña del navegador
+
+    return function() {
+      document.title = "usePopcorn"; //Cuando se desmonta el componente, vuelve al título original
+      console.log(`Clean up effect for movie ${title}`);
+    }
+  }, [title]); //Se ejecuta cada vez que cambia el título de la película
 
   return (
     <div className="details">
