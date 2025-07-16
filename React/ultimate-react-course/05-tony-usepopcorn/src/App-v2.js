@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import StarRating from "./StarRating";
 
 
@@ -10,17 +10,24 @@ const KEY = "3d5c8b5e";
 export default function App() {
   const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
+  const [watched, setWatched] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [selectedId, setSelectedId] = useState(null);
-  
-  // const [watched, setWatched] = useState([]);
-  const [watched, setWatched] = useState(function() {
-    const storedValue = localStorage.getItem('watched');
-    return JSON.parse(storedValue);
-  }); 
-  //Al iniciar la APP, solo se ejecuta una vez gracias al lazy initilization
-  //Si encuentra datos, los convierte de texto JSON a un array de películas (watched)
+
+  /* useEffect(function() {
+    console.log('After initial render');
+   }, []) //Se ejecuta una vez carga la pagina
+
+  useEffect(function() {
+    console.log('After every render');
+  }) //Se ejecuta cada vez que se renderiza el componente
+
+  useEffect(function() {
+    console.log("D")
+  }, [query])
+
+     console.log('During render'); //Se ejecuta primero porque lo hace mientras carga la pagina */
 
   function handleSelectMovie(id) {
     setSelectedId((selectedId) => (id === selectedId ? null : id)); //Pregunta si el id seleccionado es el mismo que el actual, si es asi lo pone a null, si no lo pone al id seleccionado
@@ -32,21 +39,13 @@ export default function App() {
 
   function handleAddWatched(movie) {
     setWatched((watched) => [...watched, movie]);
-
-    // localStorage.setItem('watched', JSON.stringify([...watched, movie]));
-  } 
-  //cuando el usuario califica y agrega la película, se actualiza watched con una nueva copia del array
-  //El useEffect de abajo se activa y guarda la nuea lista en localStorage
+  }
 
   function handleDeleteWatched(id) {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
-  //Se eliminar por imdbID, setWAtched actualiza el estado, el useEffect guarda el nuevo array sin la película en localStorage
 
-  useEffect(function() {
-    localStorage.setItem('watched', JSON.stringify(watched));
-  }, [watched]);
-  //Cada que el usuario agrega o elimina una película, y watched cambia, s eejecuta el efecto
+
 
   useEffect(
     function () {
@@ -91,8 +90,6 @@ export default function App() {
       handleCloseMovie(); 
       //Borramos la película antes de que el usuario haga una busqueda
       fetchMovies();
-
-      console.log("Aborting previous request")
 
       return function()
       {
@@ -174,32 +171,6 @@ function NavBar({ children }) {
 }
 
 function Search({ query, setQuery }) {
-
- /* useEffect(function() {
-    const el = document.querySelector('.search');
-    console.log(el);
-    el.focus();
-  }, [query])*/ //así no
-
-  const inputEl = useRef(null);
-  
-  useEffect(function() {
-    function callback(e) {
-
-      if(document.activeElement === inputEl.current) return
-
-      if(e.code === "Enter") {
-        inputEl.current.focus(); 
-        setQuery("");
-      }
-    }
-
-    document.addEventListener('keydown', callback);
-    return () => document.addEventListener('keydown', callback)
-  }, [setQuery]);    
-  //Al tener focus, el curso aparece dentro de dicho elemento, el usuario puede empezar a escribir directamente sin hacer clic, los atajos del teclado o navegación se aplican a ese elemento
-
-
   return (
     <input
       className="search"
@@ -207,7 +178,6 @@ function Search({ query, setQuery }) {
       placeholder="Search movies..."
       value={query}
       onChange={(e) => setQuery(e.target.value)}
-      ref={inputEl}
     />
   );
 }
@@ -307,21 +277,11 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   const [isLoading, setIsLoading] = useState(false);
   const [userRating, setUserRating] = useState("");
 
-  const countRef = useRef(0);
-
-  useEffect(
-    function() {
-      if (userRating) countRef.current++;
-      //countRef.current = countRef.current + 1
-      //countRef.current += 1
-  }, [userRating]);
-
   const isWatched = watched.map((movie) => movie.imdbID).includes(selectedId); //Verifica si la película ya ha sido vista
 
   const watchedUserRating = watched.find(
     (movie) => movie.imdbID === selectedId
   )?.userRating;
-
 
   const {
     Title: title,
@@ -336,20 +296,6 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     Genre: genre,
   } = movie;
 
-    /* eslint-disable*/
-  // if(imdbRating > 8) [isTop, setIsTop] = useState(true);
-  // if(imdbRating > 8) return <p>Greatest Ever!</p>;
-
-  // const [isTop, setIsTop] = useState(imdbRating > 8);
-  // console.log(isTop);
-  // useEffect(function() {
-  //   setIsTop(imdbRating > 8);
-  // }, [imdbRating])
-
-  const isTop = imdbRating > 8;
-  console.log(isTop);
-
-  const [avgRating, setAvgRating] = useState(0);
 
   function handleAdd() {
     const newWatchedMovie = {
@@ -360,13 +306,10 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
       imdbRating: Number(imdbRating),
       runtime: Number(runtime.split(" ").at(0)),
       userRating,
-      countRatingDecisions: countRef.current,
     };
 
     onAddWatched(newWatchedMovie);
-    // onCloseMovie();
-    setAvgRating(Number(imdbRating));
-    setAvgRating(avgRating => (avgRating + userRating) / 2);
+    onCloseMovie();
   }
 
     useEffect(function(){
@@ -439,8 +382,6 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
               </p>
             </div>
           </header>
-
-          {/* <p>{avgRating}</p> */}
 
           <section>
             <div className="rating">
