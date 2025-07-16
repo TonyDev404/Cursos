@@ -109,6 +109,8 @@ export default function App() {
 
       fetchMovies();
 
+      console.log("Aborting previous request")
+
       return function()
       {
         controller.abort();
