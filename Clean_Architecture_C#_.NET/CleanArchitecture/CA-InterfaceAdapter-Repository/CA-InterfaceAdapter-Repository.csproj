@@ -2,13 +2,14 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
-        <RootNamespace>CA_ApplicationLayer</RootNamespace>
+        <RootNamespace>CA_InterfaceAdapter_Repository</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CA-EnterpriseLayer\CA-EnterpriseLayer.csproj" />
+      <ProjectReference Include="..\CA-ApplicationLayer\CA-ApplicationLayer.csproj" />
+      <ProjectReference Include="..\CA-InferfaceAdapter-Data\CA-InferfaceAdapter-Data.csproj" />
     </ItemGroup>
 
 </Project>
