@@ -2,12 +2,14 @@
 
 namespace CA_ApplicationLayer;
 
-public class GetBeerUseCase<T>(IRepository<T> beerRepository)
+public class GetBeerUseCase<TEntity, TOutput>(IRepository<TEntity> beerRepository, IPresenter<TEntity, TOutput> presenter)
 {
-    private readonly IRepository<T> _beerRepository = beerRepository;
+    private readonly IRepository<TEntity> _beerRepository = beerRepository;
+    private readonly IPresenter<TEntity, TOutput> _presenter = presenter;
 
-    public async Task<IEnumerable<T>> ExecuteAsync()
+    public async Task<IEnumerable<TOutput>> ExecuteAsync()
     {
-        return await _beerRepository.GetAllAsync();
+        var beers =  await _beerRepository.GetAllAsync();
+        return _presenter.Present(beers);
     }
 }
