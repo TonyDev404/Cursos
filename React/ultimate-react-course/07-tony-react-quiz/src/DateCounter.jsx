@@ -19,9 +19,6 @@ function reducer(state, action) {
     default:
       throw new Error('Unkown action');
   };
-  // if(action.type === 'inc') return state + 1;
-  // if(action.type === 'dec') return state - 1;
-  // if(action.type === 'setCount') return action.payload;
   //buena practica, siempre retornar el estado actual si no se cumple ninguna condición
 }
 
