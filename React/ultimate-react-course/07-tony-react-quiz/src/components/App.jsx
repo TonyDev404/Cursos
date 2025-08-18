@@ -132,7 +132,7 @@ export default function App() {
                     payload: data,
                 })
             )
-            .catch((err) =>
+            .catch(() =>
                 dispatch({ type: "dataFailed" })
             );
     }, []);
