@@ -8,11 +8,8 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-<<<<<<< HEAD
-    "server": "json-server --watch data/cities.json --port 3000"
-=======
     "server": "json-server --watch data/cities.json --port 9000"
->>>>>>> dda838a8438a8dad8b95dc5a15818bb8eb103b52
+
   },
   "dependencies": {
     "json-server": "^1.0.0-beta.3",
