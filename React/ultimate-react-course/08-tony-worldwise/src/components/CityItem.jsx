@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 import styles from "./CityItem.module.css";
+import { useCities } from "../Contexts/CitiesContext";
 
 const formatDate = (date) =>
     new Intl.DateTimeFormat("en", {
@@ -10,12 +11,22 @@ const formatDate = (date) =>
     }).format(new Date(date));
 
 function CityItem({ city }) {
+    const { currentCity, deleteCity } = useCities();
     const { cityName, emoji, date, id, position } = city;
+
+    //Con esto prevenimos que el enlace de la ciudad se abra al eliminar la ciudad
+    function handleClick(e) {
+        e.preventDefault();
+        deleteCity(id);
+    }
 
     return (
         <li>
             <Link
-                className={styles.cityItem}
+                //Classname conditionally applied
+                className={`${styles.cityItem} ${
+                    id === currentCity.id
+                ? styles['cityItem--active'] : ""}`}
                 to={`${id}?lat=${position.lat}&lng=${position.lng}`}
             >
                 <span className={styles.emoji}>
@@ -25,7 +36,7 @@ function CityItem({ city }) {
                 <time className={styles.date}>
                     ({formatDate(date)})
                 </time>
-                <button className={styles.deleteBtn}>
+                <button className={styles.deleteBtn} onClick={handleClick}>
                     &times;
                 </button>
             </Link>
