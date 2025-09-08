@@ -114,3 +114,182 @@
 // Console.WriteLine($"El promedio general de los estudiantes es de: {promedio}");
 //===================================================================
 
+// Console.WriteLine("Ingrese el factorial a calcular:");
+// var fact = Convert.ToInt64(Console.ReadLine());
+//
+// var total = 1;
+// for (var i = 1; i <= fact; i++)
+// {
+//     total *= i;
+// }
+//
+// Console.WriteLine($"El factorial de {fact} es {total}");
+
+//=====================================================================
+//=====WHILE=====
+
+// byte numero = 1;
+//
+// while (numero <= 10)
+// {
+//     Console.WriteLine(numero);
+//     numero++;
+// }
+
+
+// string password1 = "";
+// string password2 = "";
+//
+// Console.WriteLine("Escribe tu contraseña: ");
+// password1 = Console.ReadLine();
+//
+// while (password1 != password2)
+// {
+//     Console.WriteLine("Confirma tu contraseña: ");
+//     password2 = Console.ReadLine();
+//
+//     if (password1 == password2)
+//     {
+//         break;
+//     }
+//     Console.WriteLine("Tus contraseñas no coinciden");
+// }
+//
+// Console.WriteLine("¡Contraseña guardada!");
+
+// int i = 1;
+//
+// do
+// {
+//     Console.WriteLine(i);
+//     i++;
+// }while (i <= 10);
+
+
+// var num1 = 0;
+// var num2 = 0;
+// var opcion = 0;
+// var resultado = 0;
+//
+// do
+// {
+//     Console.WriteLine("1) Suma");
+//     Console.WriteLine("2) Resta");
+//     Console.WriteLine("3) Multiplicación");
+//     Console.WriteLine("4) Division");
+//     
+//     Console.WriteLine("Que operación desea realizar");
+//     opcion = byte.Parse(Console.ReadLine());
+// } while ((opcion < 1) || (opcion > 4));
+//
+// Console.WriteLine("Escribe el primer numero: ");
+// num1 = int.Parse(Console.ReadLine());
+//
+// Console.WriteLine("Escribe el segundo numero: ");
+// num2 = int.Parse(Console.ReadLine());
+//
+// switch (opcion)
+// {
+//     case 1:
+//         resultado = num1 + num2;
+//         break;
+//     case 2:
+//         resultado = num1 - num2;
+//         break;
+//     case 3:
+//         resultado = num1 * num2;
+//         break;
+//     case 4: 
+//         resultado = num1 / num2;
+//         break;
+//     default:
+//         Console.WriteLine("Opción no valida");
+//         break;
+// }
+//
+// Console.WriteLine($"El resultado es: {resultado}");
+
+
+//=====================================================================
+//=====Iteraciones anidadas=====
+
+// int i; //variable se encarga del bucle exterior
+// int j; //variable se encargar del bucle interior
+// int resultado; //guardar el resultado de la multiplicación
+//
+// for (i = 1; i <= 10; i++)
+// {
+//     Console.WriteLine($"Tabla de multiplicar del {i}");
+//     for (j = 1; j <= 10; j++)
+//     {
+//         resultado = i * j;
+//
+//         Console.WriteLine($"{i} * {j} = {resultado}");
+//     }
+// }
+//
+// Console.ReadKey();
+
+//============TAREA 1============
+//
+// long num = 0;
+// long exponente = 0;
+//
+// double total = 1;
+// double totalNegativo = 0;
+//
+// Console.WriteLine("Introduce un número: ");
+// num = Convert.ToInt64(Console.ReadLine());
+//
+// Console.WriteLine("Introduce la potencia: ");
+// exponente = Convert.ToInt64(Console.ReadLine());
+//
+// if (exponente < 0)
+// {
+//     exponente *= -1;
+//
+//     for (var i = 1; i <= exponente; i++)
+//     {
+//         total *= num;
+//     }
+//
+//     totalNegativo = (1 / total);
+//     Console.WriteLine($"El resultado de {num} ^ {exponente * -1} es: {totalNegativo}");
+// }
+// else
+// {
+//     for (var i = 1; i <= exponente; i++)
+//     {
+//         total *= num;
+//     }
+//     Console.WriteLine($"El resultado de {num} ^ {exponente} es: {total}");
+// }
+//
+
+
+//============TAREA 2============
+
+int numero, divisor, numDivisores = 0;
+
+//Bucle exterior
+for (numero = 2; numero <= 100; numero++)
+{
+    for (divisor = 1; divisor <= numero; divisor++)
+    {
+        if (numero % divisor == 0)
+        {
+            numDivisores++;
+        }
+    }
+
+    //verificamos que el número de divisores sea igual a 2
+    if (numDivisores == 2)
+    {
+        Console.WriteLine(numero);
+    }
+    
+    //Reiniciamos el conteo del número de divisores
+    numDivisores = 0;
+}
+
+Console.ReadKey();
