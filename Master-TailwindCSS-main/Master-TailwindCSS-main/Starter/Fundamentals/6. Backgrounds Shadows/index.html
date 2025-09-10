@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Backgrounds & Shadows</title>
+  </head>
+  <body>
+    <!-- Background Images -->
+    <!-- https://tailwindcss.com/docs/background-image -->
+
+<!--    <div class="h-screen w-full-bg bg-blue-500 bg-cover bg-norepeat bg-center"-->
+<!--         style="background-image: url('https://i.pinimg.com/736x/31/79/96/3179961b02d8edec5f0cd258bde53fa1.jpg')">-->
+
+<!--    </div>-->
+
+    <!-- Shadows -->
+    <!-- https://tailwindcss.com/docs/drop-shadow -->
+    <!-- I know we didn't cover flexbox, but it's just for demo purposes -->
+    <div class="flex flex-wrap">
+      <div class="w-[400px] mt-10 ml-4 p-3 shadow-md">Shadow Medium</div>
+      <div class="w-[400px] mt-10 ml-7 p-3 shadow-lg">Shadow Large</div>
+      <div class="w-[400px] mt-10 ml-7 p-3 shadow-xl">Shadow Extra Large</div>
+      <div class="w-[400px] mt-10 ml-7 p-3 shadow-2xl">Shadow 2XL</div>
+
+      <div class="w-[400px] mt-10 ml-7 p-3 shadow-inner">Inner Shadow</div>
+      <div>
+        <!-- Colors/Shadow -->
+        <div class="w-[400px] mt-10 ml-7 p-3 shadow-lg shadow-teal-300/70">Teal Shadow</div>
+    <!-- El 300 es la tonalidad y el 70 el porcentaje de visibilidad -->
+      </div>
+    </div>
+
+
+    <!-- Gradients -->
+    <!-- https://tailwindcss.com/docs/gradient-color-stops -->
+    <div class="h-40 bg-gradient-to-r from-teal-100 to-green-500 m-10 text-center p-40">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab architecto aspernatur, aut consectetur delectus eaque expedita id incidunt ipsam libero molestiae molestias nihil, porro quidem, quis quod repellendus suscipit tempora.`</div>
+
+    <div class="h-40 bg-gradient-to-r from-red-100 via-[crimson]-500 to-red-400 mt-10 text-center p-40">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias cumque, deserunt dicta ducimus enim eos ex id ipsa itaque minima molestias necessitatibus nesciunt nostrum officia recusandae soluta, tenetur voluptatibus.
+    </div>
+  </body>
+</html>
