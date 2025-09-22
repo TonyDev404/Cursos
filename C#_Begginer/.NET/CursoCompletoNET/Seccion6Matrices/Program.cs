@@ -85,8 +85,51 @@
 //===================================================================================
 //======Matrices multidimensionales======
 
-//tipo[,] nombre = new tipo [filas, columnas]
-double[,] ventas = new double[4,3];
+// //tipo[,] nombre = new tipo [filas, columnas]
+// double[,] ventas = new double[4,3]
+// {
+//     {100, 120, 205},
+//     {115, 196, 300},
+//     {157, 172, 245},
+//     {130, 180, 281}
+// };
+//
+// // //declaracion e instancia de matriz de tres dimensiones [filas, columnas, profundidad]
+// int [,,] matriz3D = new int[2,2,3]
+// {
+//     {
+//         {1, 2, 3}, 
+//         {4, 5, 6}
+//     },
+//     {
+//         {7, 8, 9}, 
+//         {10, 11, 12}
+//     }
+// };
+//
 
-//declaracion e instancia de matriz de tres dimensiones
-double[,,] ventasAnio = new double[5, 3, 3];
+// double[,] ventas = new double [4, 3]
+// {
+//     {100, 120, 205},
+//     {115, 196, 300},
+//     {157, 172, 245},
+//     {130, 180, 281}
+// };
+//
+// for (var i = 0; i < 4; i++)
+// {
+//     Console.WriteLine($"Fila {i}");
+//     for (var j = 0; j < 3; j++)
+//     {
+//         Console.WriteLine(ventas[i, j]);
+//     }
+// }
+
+// Console.WriteLine(ventas[3, 2]);
+// ventas[1, 2] = 450;
+
+//===================================================================================
+//======Ejercicio 1======
+
+int alumnos, salones;
+double sumaCalif, promedio, califMin, califMax

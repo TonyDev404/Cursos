@@ -101,4 +101,24 @@
 // }
 // while(contador <= 10)
 
-/*La  diferencia entr while y do while es que el do while se ejecuta al menos una vez y luego hace la comparacion, mientras que en el while primero hace la comparacion y luego se ejecuta*/
+/*La  diferencia entre while y do while es que el do while se ejecuta al menos una vez y luego hace la comparacion, mientras que en el while primero hace la comparacion y luego se ejecuta*/
+
+//===================Ejercicio integrador Estructuras Repetitivas 1.===================
+
+var num = 35;
+
+for (var i = 0; i <= num; i++) {
+    console.log("Numero: " + num);
+}
+
+var cuentaRegresiva = 10;
+
+do {
+    if (cuentaRegresiva == 0) {
+        console.log("Feliz Anio Nuevo !!!");
+        break;
+    }
+    console.log("Numero: " + cuentaRegresiva);
+    cuentaRegresiva--;
+}
+while (cuentaRegresiva >= 0);
