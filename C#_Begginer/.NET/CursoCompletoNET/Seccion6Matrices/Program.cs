@@ -130,6 +130,70 @@
 
 //===================================================================================
 //======Ejercicio 1======
+//
+// byte alumnos, salones;
+// var sumaCalif = 0.00;
+// var califMin = 0.00;
+// var califMax = 0.00;
+// double promedio;
+//
+// //Pedimos el número de salones
+// Console.WriteLine("Ingrese el número de salones: ");
+// salones = Convert.ToByte(Console.ReadLine());
+//
+// //Pedimos el número de alumnos
+// Console.WriteLine("Ingrese el número de alumnos por salón: ");
+// alumnos = Convert.ToByte(Console.ReadLine());
+//
+// //Creación de la matriz
+//  double[,] calificaciones = new double[salones, alumnos];
+//
+//  for (var i = 0; i < salones; i++)
+//  {
+//      Console.WriteLine($"Salón {i}");
+//      for (var j = 0; j < alumnos; j++)
+//      {
+//          //Pedimos la califiación
+//          Console.WriteLine($"Ingresa la calificación del alumno {j}: ");
+//          calificaciones[i, j] = Convert.ToDouble(Console.ReadLine());
+//          
+//          //Acumulamos las calificaciones
+//          sumaCalif += calificaciones[i,j];
+//      }
+//  }
+//  
+//  //Calculamos el promedio
+//  promedio = sumaCalif / (salones * alumnos);
+//  
+//  //Calculamos la calificación mínima
+//  
+//  for (var i = 0; i < salones; i++)
+//  {
+//      for (var j = 0; j < alumnos; j++)
+//      {
+//          if (calificaciones[i, j] < califMin)
+//          {
+//              califMin = calificaciones[i, j];
+//          }
+//      }
+//  }
+//  
+//  //Calculamos la calificación máxima
+//  for (var i = 0; i < salones; i++)
+//  {
+//      for (var j = 0; j < alumnos; j++)
+//      {
+//          if (calificaciones[i, j] > califMin)
+//          {
+//              califMin = calificaciones[i, j];
+//          }
+//      }
+//  }
+//
+//  Console.WriteLine("\n");
+//  Console.WriteLine($"El promedio es {promedio:F2}");
+//  Console.WriteLine($"La calificación mínima es: {califMin}");
+//  Console.WriteLine($"La calificación máxima es: {califMax}");
 
-int alumnos, salones;
-double sumaCalif, promedio, califMin, califMax
+//===================================================================================
+//======Matrices escalonadas======
