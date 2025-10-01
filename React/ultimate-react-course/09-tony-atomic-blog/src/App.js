@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { faker } from "@faker-js/faker";
 import { PostProvider, usePosts } from "./PostContext";
 import Test from "./Test";
@@ -78,7 +78,7 @@ const {posts} = usePosts();
   return <p>🚀 {posts.length} atomic posts found</p>;
 }
 
-function Main() {
+const Main = memo(function Main() {
   const {posts, onAddPost} = usePosts();
 
   return (
@@ -87,7 +87,7 @@ function Main() {
       <Posts posts={posts} />
     </main>
   );
-}
+})
 
 function Posts() {
   const {posts} = usePosts();
