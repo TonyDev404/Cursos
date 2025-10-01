@@ -197,3 +197,20 @@
 
 //===================================================================================
 //======Matrices escalonadas======
+
+// double[][] ventas = new double [4][];
+//
+// //declaracion de las matrices internas e inicializacion
+// ventas[0] = [155, 100, 170]; //también se puede hacer asi
+// ventas[1] = new double[2] {205, 120};
+// ventas[2] = new double[4] {115, 190, 104, 130};
+// ventas[3] = new double[3] {163, 218, 125};
+
+//Lo mismo de arriba pero mas limpio
+var ventas = new double[][]
+{
+    [155, 100, 170],
+    [205, 120],
+    [115, 190, 104, 130],
+    [163, 218, 125]
+};
