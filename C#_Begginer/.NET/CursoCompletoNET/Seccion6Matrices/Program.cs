@@ -207,10 +207,119 @@
 // ventas[3] = new double[3] {163, 218, 125};
 
 //Lo mismo de arriba pero mas limpio
-var ventas = new double[][]
+// var ventas = new double[][]
+// {
+//     [155, 100, 170],
+//     [205, 120],
+//     [115, 190, 104, 130],
+//     [163, 218, 125]
+// };
+//
+// for (var i = 0; i < ventas.Length; i++)
+// {
+//     Console.WriteLine($"Elemento: {i}");
+//     
+//     for (var j = 0; j < ventas[i].Length; j++)
+//     {
+//         Console.WriteLine(ventas[i][j]);
+//     }
+// }
+
+//======Matrices escalonadas Ejercicio======
+
+// byte numAlumnos, salones;
+// double promedio, sumaAlumnos = 0, sumaCalif = 0, califMin = 10, califMax = 0;
+//
+// // pedimos el numero de salones
+// Console.WriteLine("Ingrese el número de salones: ");
+// salones = Convert.ToByte(Console.ReadLine());
+//
+// //creación de la matriz
+//  double[][] calificaciones = new double[salones][];
+//
+// //pedimo el número de alumnos por salón
+//  for (var i = 0; i < salones; i++)
+//  {
+//      Console.WriteLine($"Ingrese el número de alumnos para el salón {i + 1}: ");
+//      numAlumnos = Convert.ToByte(Console.ReadLine());
+//
+//      //acumulamos el número de alumnos totales, para el promedio de toda la escuela
+//      sumaAlumnos += numAlumnos;
+//      
+//      //instanciamos las matrices internas (alumnos en cada salón)
+//      calificaciones[i] = new double[numAlumnos];
+//  }
+//  
+//  //pedimos las calificaciones de los alumnos de cada salón
+//  for (var i = 0; i < salones; i++)
+//  {
+//      for (int j = 0; j < calificaciones[i].Length; j++)
+//      {
+//          Console.WriteLine($"Ingresa la calificación del alumno {j + 1}: ");
+//          calificaciones[i][j] = Convert.ToDouble(Console.ReadLine());
+//          
+//          sumaCalif += calificaciones[i][j];
+//      }
+//  }
+//  
+// //calculamos el promedio
+//  promedio = sumaCalif / sumaAlumnos;
+//
+// //calculamos la calificación mínima
+//  for (var i = 0; i < salones; i++)
+//  {
+//      for (var j = 0; j < calificaciones[i].Length; j++)
+//      {
+//          if (calificaciones[i][j] < califMin)
+//          {
+//              califMin = calificaciones[i][j];
+//          }
+//      }
+//  }
+//  
+//  //calculamos la calificación máxima
+//  for (var i = 0; i < salones; i++)
+//  {
+//      for (var j = 0; j < calificaciones[i].Length; j++)
+//      {
+//          if (calificaciones[i][j] > califMax)
+//          {
+//              califMax = calificaciones[i][j];
+//          }
+//      }
+//  }
+//  
+//  //mostramos las calificaciones de todos los alumnos de la escuela
+//  for (var i = 0; i < salones; i++)
+//  {
+//      for (var j = 0; j < calificaciones[i].Length; j++)
+//      {
+//          Console.WriteLine($"El alumno {j + 1}, tiene {calificaciones[i][j]} de calificación");
+//      }
+//  }
+//
+//  Console.WriteLine($"El promedio es: {promedio}");
+//  Console.WriteLine($"La calificaicón mínima es: {califMin}");
+//  Console.WriteLine($"La calificación máxima es: {califMax}");
+
+
+double[,] ventas2D = new double[4, 3]
 {
-    [155, 100, 170],
-    [205, 120],
-    [115, 190, 104, 130],
-    [163, 218, 125]
+    { 100, 120, 205 },
+    { 115, 196, 300 },
+    { 157, 172, 245 },
+    { 130, 180, 281 }
 };
+
+//Mostramos el tamaño de la primera dimensión
+Console.WriteLine(ventas2D.GetLength(1));
+
+for (var i = 0; i < ventas2D.GetLength(1); i++)
+{
+    Console.WriteLine($"Flia {i}");
+
+    for (var j = 0; j < ventas2D.GetLength(1); j++)
+    {
+        Console.WriteLine(ventas2D[i, j]);
+    }
+}
